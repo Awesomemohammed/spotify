@@ -1,0 +1,15 @@
+{
+	"name": "spotifyendtoendadf",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "469da258-c30b-4d45-a1f7-ce8319f4fe42",
+		"tenantId": "1da50ec2-5ae2-40c4-afcf-b72d7d0d2813"
+	}
+}
