@@ -5,6 +5,8 @@
 			{
 				"name": "azureSQLtoDataLake",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Lookup1",
@@ -110,7 +112,7 @@
 						"parameters": {
 							"container": "bronze",
 							"folder": {
-								"value": "@{pipeline().parameters.table},'_cdc'",
+								"value": "@concat(pipeline().parameters.table, '_cdc')",
 								"type": "Expression"
 							},
 							"file": "cdc.json"
@@ -122,6 +124,8 @@
 			{
 				"name": "current",
 				"type": "SetVariable",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"secureOutput": false,
@@ -139,6 +143,8 @@
 			{
 				"name": "If Condition1",
 				"type": "IfCondition",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "azureSQLtoDataLake",
@@ -173,7 +179,7 @@
 									"parameters": {
 										"container": "bronze",
 										"folder": {
-											"value": "@{pipeline().parameters.table},'_cdc'",
+											"value": "@{pipeline().parameters.table}'_cdc'",
 											"type": "Expression"
 										},
 										"file": "@concat(pipeline().parameters.table,'_',variables('current'))"
@@ -253,7 +259,7 @@
 									"parameters": {
 										"container": "bronze",
 										"folder": {
-											"value": "@{pipeline().parameters.table},'_cdc'",
+											"value": "@concat(pipeline().parameters.table, '_cdc')",
 											"type": "Expression"
 										},
 										"file": "empty.json"
