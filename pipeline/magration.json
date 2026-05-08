@@ -406,15 +406,7 @@
 						"referenceName": "Parquet1",
 						"type": "DatasetReference",
 						"parameters": {
-							"Container": "bronze",
-							"folder": {
-								"value": "@{item().table}",
-								"type": "Expression"
-							},
-							"file": {
-								"value": "@concat(item().table,'_',variables('current'))",
-								"type": "Expression"
-							}
+							"Container": "bronze"
 						}
 					}
 				]
